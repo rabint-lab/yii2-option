@@ -74,7 +74,7 @@ class Module extends \yii\base\Module
 
 
         return [
-            'label' => Yii::t('rabint', 'اختیارات'),
+            'label' => Yii::t('rabint', 'تنظیمات'),
             'icon' => '<i class="fas fa-cogs"></i>',
             'options' => ['class' => 'treeview'],
             'url' => '#',
