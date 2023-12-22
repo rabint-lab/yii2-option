@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
 <div class="grid-box option-index">
     <div class="clearfix"></div>
     <p class="description">
-        <br />
+        <br/>
         <?= $tabDesc['description']; ?>
-        <br />
+        <br/>
     </p>
     <div class="row">
         <div class="col-sm-12">
@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                     echo $tabBlock;
                     ?>
                     <li role="presentation" class="nav-item <?php echo ($tabs == 1) ? 'active' : ''; ?>">
-                        <a href="#<?php echo $group; ?>" class="nav-link" aria-controls="<?php echo $group; ?>" role="tab" data-toggle="tab"><?php echo $option['title'] ?></a>
+                        <a href="#<?php echo $group; ?>" class="nav-link" aria-controls="<?php echo $group; ?>"
+                           role="tab" data-toggle="tab"><?php echo $option['title'] ?></a>
                     </li>
                     <?php
                     $this->endBlock();
@@ -40,7 +41,8 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                     $this->beginBlock('contentBlock');
                     echo $contentBlock;
                     ?>
-                    <div role="tabpanel" class=" tab-pane <?php echo ($tabs == 1) ? 'active' : ''; ?>" id="<?php echo $group; ?>">
+                    <div role="tabpanel" class=" tab-pane <?php echo ($tabs == 1) ? 'active' : ''; ?>"
+                         id="<?php echo $group; ?>">
                         <?= isset($option['description']) ? '<p class="alert alert-default">' . $option['description'] . '</p>' : ''; ?>
                         <div class="groupCnts">
                             <?php
@@ -52,8 +54,8 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                             if (isset($option['clone']) and ($option['clone'] === 1 or $option['clone'] === TRUE)) {
                                 $CLONE = TRUE;
                                 $REAPEAT = 1;
-                            } elseif (isset($option['clone']) and ((int) $option['clone']) > 1) {
-                                $REAPEAT = (int) $option['clone'];
+                            } elseif (isset($option['clone']) and ((int)$option['clone']) > 1) {
+                                $REAPEAT = (int)$option['clone'];
                                 $CLONE = FALSE;
                             } else {
                                 $CLONE = FALSE;
@@ -70,9 +72,9 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                     $values = (isset($groupValues[$ct])) ? $groupValues[$ct] : [];
                                 }
                                 if ($CLONE) {
-                                    echo '<div class="optGroup clonelyGroup ">' . "\n";
+                                    echo '<div class="optGroup row clonelyGroup ">' . "\n";
                                 } else {
-                                    echo '<div class="optGroup">' . "\n";
+                                    echo '<div class="optGroup row">' . "\n";
                                 }
 
                                 foreach ($option['options'] as $data) {
@@ -83,6 +85,7 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                             'label' => 'label_not_set!',
                                             'hint' => '',
                                             'tagOption' => [],
+                                            'groupClass' => 'col-sm-12',
                                         ],
                                         $data
                                     );
@@ -97,19 +100,19 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                     }
                                     $tagOption = $data['tagOption'];
                                     $name = $group . '[' . $name . '][]';
-                                    $label = '<div class="form-group"><label for="" >' . $data['label'] . '</label>';
+                                    $label = '<div class="form-group"><label for="" > ' . $data['label'] . ' </label>';
                                     $labelEnd = '<p class="help-block">' . $data['hint'] . '</p></div>';
 
-                                    $label2 = '<div class="form-group"><label for="" >';
-                                    $label2End = $data['label'] . '</label>' . '<p class="help-block">' . $data['hint'] . '</p></div>';
+                                    $label2 = '<div class="form-group"><label for="" > ';
+                                    $label2End = ' '.$data['label'] . ' </label>' . '<p class="help-block">' . $data['hint'] . '</p></div>';
 
                                     /* =================================================================== */
 
                                     switch ($data['type']) {
                                         case 'attachment_id':
                                             $tagOption = array_merge(['class' => 'form-control'], $tagOption);
-                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, (int) $tag_value, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
-                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, (int) $default_val, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
+                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$tag_value, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
+                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$default_val, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
                                             break;
                                         case 'attachment_url':
                                             $tagOption = array_merge(['class' => 'form-control'], $tagOption);
@@ -128,8 +131,8 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                             break;
                                         case 'select':
                                             $tagOption = array_merge(['class' => 'form-control', 'prompt' => ''], $tagOption);
-                                            $echo = $label . Html::dropDownList($name, $tag_value, $data['items'], $tagOption) . $labelEnd;
-                                            $echo2 = $label . Html::dropDownList($name, $default_val, $data['items'], $tagOption) . $labelEnd;
+                                            $echo = $label.' ' . Html::dropDownList($name, $tag_value, $data['items'], $tagOption) . $labelEnd;
+                                            $echo2 = $label.' ' . Html::dropDownList($name, $default_val, $data['items'], $tagOption) . $labelEnd;
                                             break;
                                         case 'checkboxlist':
                                             $tagOption = array_merge(['class' => 'checkboxlist', 'prompt' => ''], $tagOption);
@@ -152,10 +155,11 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                             $echo2 = $label . Html::input($data['type'], $name, $default_val, $tagOption) . $labelEnd;
                                             break;
                                     }
-                                    $echo = '<div class="rec">' . $echo . '</div>';
+
+                                    $echo = '<div class="rec '.$data['groupClass'].'">' . $echo . '</div>';
 
                                     if ($ct == 0 and $CLONE) {
-                                        $btns .= '<div class="rec">' . $echo2 . '</div>';
+                                        $btns .= '<div class="rec '.$data['groupClass'].'">' . $echo2 . '</div>';
                                         $echo2 = "";
                                     }
 
@@ -229,31 +233,34 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
 </div>
 <script>
     <?php ob_start(); ?>
-    $(function() {
-        $('#myTab a').click(function(e) {
+    $(function () {
+        $('#myTab a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
         });
     });
-    $(document).ready(function() {
-        $('.rabint_unclone_btn').each(function() {
-            $count = $(this).parent().parent().parent().children().length;
+    $(document).ready(function () {
+        $('.rabint_unclone_btn').each(function () {
+            $count = $(this).parents(".groupCnts").children().length;
         });
 
-        $('.option-index').on('click', '.rabint_unclone_btn', function() {
-            $count = $(this).parent().parent().parent().children().length;
-            if ($count > 4)
-                $(this).parent().parent().remove();
-
+        $('.option-index').on('click', '.rabint_unclone_btn', function () {
+            $count = $(this).parents(".groupCnts").children().length;
+            if ($count > 1) {
+                $(this).parents('.optGroup').remove();
+            } else {
+                $(this).hide();
+            }
         });
-        $('.option-index').on('click', '.rabint_clone_btn', function() {
+        $('.option-index').on('click', '.rabint_clone_btn', function () {
             $exam = $(this).parent().find('.example').html();
-            $(this).before('<div class="optGroup clonelyGroup">' + $exam + '</div>');
-            $count = $(this).parent().parent().parent().children().length;
-            if ($count > 4)
+            //$(this).before('<div class="optGroup clonelyGroup">' + $exam + '</div>');
+            $(this).parents(".tab-pane").find(".groupCnts").append('<div class="optGroup row clonelyGroup">' + $exam + '</div>');
+            $count = $(this).parents(".tab-pane").find(".groupCnts").children().length;
+            if ($count > 1)
                 $('.rabint_unclone_btn').show();
         });
-        $('.option-index').on('click', '.rabint_moveup_btn', function() {
+        $('.option-index').on('click', '.rabint_moveup_btn', function () {
             $item = $(this).parents('.optGroup');
             if ($item.index() == 0) {
                 return;
@@ -262,7 +269,7 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
             $item.insertBefore($prev);
 
         });
-        $('.option-index').on('click', '.rabint_movedown_btn', function() {
+        $('.option-index').on('click', '.rabint_movedown_btn', function () {
             $item = $(this).parents('.optGroup');
             $next = $($item).next();
             if ($next.hasClass('optGroup')) {
@@ -271,7 +278,7 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
 
         });
 
-        $('input.save_options[type="submit"]').click(function() {
+        $('input.save_options[type="submit"]').click(function () {
             $('.nav-tab-content .example').remove();
         });
     });
