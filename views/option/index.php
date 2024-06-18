@@ -146,7 +146,8 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                             break;
                                         case 'checkbox':
                                             $tagOption = array_merge(['class' => ''], $tagOption);
-                                            $echo = $label2 . Html::checkbox($name, $tag_value, $tagOption) . $label2End;
+                                            $hidden =  Html::hiddenInput($name, 0) ;
+                                            $echo = $label2 .$hidden. Html::checkbox($name, $tag_value, $tagOption) . $label2End;
                                             $echo2 = $label2 . Html::checkbox($name, $default_val, $tagOption) . $label2End;
                                             break;
                                         default:
