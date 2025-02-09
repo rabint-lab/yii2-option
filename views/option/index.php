@@ -111,13 +111,13 @@ $this->params['breadcrumbs'][] = $tabDesc['title'];
                                     switch ($data['type']) {
                                         case 'attachment_id':
                                             $tagOption = array_merge(['class' => 'form-control'], $tagOption);
-                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$tag_value, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
-                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$default_val, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
+                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$tag_value, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png|webp)$/i')]) . $labelEnd;
+                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, (int)$default_val, ['maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png|webp)$/i')]) . $labelEnd;
                                             break;
                                         case 'attachment_url':
                                             $tagOption = array_merge(['class' => 'form-control'], $tagOption);
-                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, $tag_value, ['returnType' => 'path', 'maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
-                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, $default_val, ['returnType' => 'path', 'maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png)$/i')]) . $labelEnd;
+                                            $echo = $label . \rabint\helpers\widget::uploaderStatic($name, $tag_value, ['returnType' => 'path', 'maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png|webp)$/i')]) . $labelEnd;
+                                            $echo2 = $label . \rabint\helpers\widget::uploaderStatic($name, $default_val, ['returnType' => 'path', 'maxFileSize' => 100 * 1024 * 1024, 'acceptFileTypes' => new \yii\web\JsExpression('/(\.|\/)(gif|mp4|jpe?g|png|webp)$/i')]) . $labelEnd;
                                             break;
                                         case 'wysiwyg':
                                             $tagOption = array_merge(['class' => 'form-control'], $tagOption);
